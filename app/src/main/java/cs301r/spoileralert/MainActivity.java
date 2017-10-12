@@ -4,28 +4,41 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView titleTextView;
+    private TextView sortOptionsTextView;
+    private RadioButton sortByExpiryButton;
+    private RadioButton sortByNameButton;
+    private FloatingActionButton addFoodButton;
+    private RecyclerView foodListRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        titleTextView = (TextView) findViewById(R.id.foodstuffsTitleTextView);
+        sortOptionsTextView = (TextView) findViewById(R.id.sortOptionsTextView);
+        sortByExpiryButton = (RadioButton) findViewById(R.id.sortByExpiryRadioButton);
+        sortByNameButton = (RadioButton) findViewById(R.id.sortByNameRadioButton);
+
+        addFoodButton = (FloatingActionButton) findViewById(R.id.addFoodFloatingButton);
+        addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
+
+        foodListRecyclerView = (RecyclerView) findViewById(R.id.foodListRecyclerView);
     }
 
     @Override
