@@ -1,5 +1,7 @@
 package cs301r.spoileralert;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -37,7 +39,11 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
         //Log.v(TAG, rawResult.getText()); // Prints scan results
         //Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
+        Context context = mScannerView.getContext();
+        Intent i = new Intent(context, AddFoodActivity.class);
+        i.putExtra("FOOD_NAME", rawResult.getText());
+        context.startActivity(i);
         // If you would like to resume scanning, call this method below:
-        mScannerView.resumeCameraPreview(this);
+        //mScannerView.resumeCameraPreview(this);
     }
 }
