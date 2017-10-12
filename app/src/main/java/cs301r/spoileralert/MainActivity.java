@@ -1,5 +1,7 @@
 package cs301r.spoileralert;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
         addFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Context context = view.getContext();
+                Intent i = new Intent(context, BarcodeScannerActivity.class);
+                context.startActivity(i);
             }
         });
 
