@@ -2,10 +2,15 @@ package cs301r.spoileralert;
 
 import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.google.zxing.Result;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -40,6 +45,18 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZXingSc
         //Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
 
         Context context = mScannerView.getContext();
+        UPCRequest.get(rawResult.getText(), null, new JsonHttpResponseHandler() {
+
+            //@Override
+            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONArray response) {
+                // Pull out the first event on the public timeline
+                //JSONObject firstEvent = timeline.get(0);
+                //String tweetText = firstEvent.getString("text");
+
+                // Do something with the response
+                //System.out.println(tweetText);
+            }
+        });
         Intent i = new Intent(context, AddFoodActivity.class);
         i.putExtra("FOOD_NAME", rawResult.getText());
         context.startActivity(i);
