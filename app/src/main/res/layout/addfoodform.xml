@@ -4,11 +4,13 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView_itemName"
+    <EditText
+        android:id="@+id/editText_itemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"/>
+        android:inputType="textPersonName"
+        android:text="FOOD NAME"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +21,7 @@
             android:id="@+id/textView_acquisitionDate"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TextView"/>
+            android:text="Acquisition Date: "/>
 
         <EditText
             android:id="@+id/editText_aquisitionDate"
@@ -38,7 +40,7 @@
             android:id="@+id/textView_expiryDate"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TextView"/>
+            android:text="Expiration Date: "/>
 
         <EditText
             android:id="@+id/editText_expiryDate"
@@ -55,18 +57,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"/>
+        android:inputType="text"
+        android:text="Note"/>
 
     <Button
         android:id="@+id/button_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"/>
+        android:text="Add Food"/>
 
     <Button
         android:id="@+id/buttonback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"/>
+        android:text="Don't"/>
 </LinearLayout>
