@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,15 +12,17 @@
 
     <TextView
         android:id="@+id/foodstuffsTitleTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Foodstuffs"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"/>
 
     <LinearLayout
+        android:id="@+id/sortOptionsLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/foodstuffsTitleTextView">
 
         <TextView
             android:id="@+id/sortOptionsTextView"
@@ -44,20 +46,25 @@
             android:layout_weight="1"
             android:text="Name"/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/addFoodFloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_weight="1"
-            android:src="@android:drawable/ic_dialog_email"/>
-
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/foodListRecyclerView"
+    <ListView
+        android:id="@+id/foodListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/sortOptionsLayout"/>
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addFoodFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@android:drawable/ic_dialog_email"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/foodListView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"/>
+
+</RelativeLayout>

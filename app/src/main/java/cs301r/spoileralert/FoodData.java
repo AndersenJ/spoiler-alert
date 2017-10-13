@@ -27,36 +27,16 @@ public class FoodData {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddDate() {
-        return addDate;
-    }
-
-    public void setAddDate(String addDate) {
-        this.addDate = addDate;
-    }
-
-    public String getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public static boolean addFood(FoodData food) {
         return allFoods.add(food);
+    }
+
+    public static int getFoodCount() {
+        return allFoods.size();
+    }
+
+    public static FoodData getFoodAt(int i) {
+        return allFoods.get(i);
     }
 
     //todo removal not yet supported, consider adding a unique id to reach food and making the list into a map?
