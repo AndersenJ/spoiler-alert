@@ -4,31 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView titleTextView;
-    private TextView sortOptionsTextView;
     private RadioButton sortByExpiryButton;
     private RadioButton sortByNameButton;
     private FloatingActionButton addFoodButton;
-    private RecyclerView foodListRecyclerView;
+    private ListView foodListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        titleTextView = (TextView) findViewById(R.id.foodstuffsTitleTextView);
-        sortOptionsTextView = (TextView) findViewById(R.id.sortOptionsTextView);
         sortByExpiryButton = (RadioButton) findViewById(R.id.sortByExpiryRadioButton);
         sortByNameButton = (RadioButton) findViewById(R.id.sortByNameRadioButton);
 
@@ -42,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        foodListRecyclerView = (RecyclerView) findViewById(R.id.foodListRecyclerView);
+        foodListView = (ListView) findViewById(R.id.foodListView);
+        FoodListAdapter adapter = new FoodListAdapter(this);
+        foodListView.setAdapter(adapter);
     }
 
     @Override
@@ -65,5 +61,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        foodListView.invalidateViews();
     }
 }
