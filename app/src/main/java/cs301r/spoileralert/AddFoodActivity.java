@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -34,9 +36,6 @@ public class AddFoodActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addfoodform);
-
-        foodName =(EditText) findViewById(R.id.editText_itemName);
-        foodName.setText(getIntent().getStringExtra("FOOD_NAME"));
 
         acquiryDate = Calendar.getInstance();
         expiryDate = Calendar.getInstance();
@@ -77,6 +76,7 @@ public class AddFoodActivity extends AppCompatActivity {
                 finish();
             }
         });
+        addFoodButton.setEnabled(false);
 
         backButton = (Button) findViewById(R.id.buttonback);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +88,28 @@ public class AddFoodActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        foodName =(EditText) findViewById(R.id.editText_itemName);
+        foodName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String foodName = s.toString();
+                addFoodButton.setEnabled(foodName.length() > 0);
+            }
+        });
+        foodName.setText(getIntent().getStringExtra("FOOD_NAME"));
+
     }
 
     @Override
