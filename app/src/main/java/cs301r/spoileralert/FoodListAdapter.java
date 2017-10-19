@@ -40,7 +40,14 @@ public class FoodListAdapter extends BaseAdapter {
         View v = inflater.inflate(R.layout.food_list_item, parent, false);
 
         TextView itemName = (TextView) v.findViewById(R.id.textView_foodListName);
+        TextView acquiryDate = (TextView) v.findViewById(R.id.textView_foodListAcq);
+        TextView expiryDate = (TextView) v.findViewById(R.id.textView_foodListExp);
+        TextView note = (TextView) v.findViewById(R.id.textView_foodListNote);
+
         itemName.setText(FoodData.getFoodAt(position).getName());
+        acquiryDate.setText(FoodData.getFoodAt(position).getAcquiry());
+        expiryDate.setText(FoodData.getFoodAt(position).getExpiry());
+        note.setText(FoodData.getFoodAt(position).getNote());
 
         return v;
     }

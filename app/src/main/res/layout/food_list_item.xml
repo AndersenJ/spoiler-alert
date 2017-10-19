@@ -8,5 +8,23 @@
         android:id="@+id/textView_foodListName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="I am food."/>
+        android:text="Name of Food."/>
+
+    <TextView
+        android:id="@+id/textView_foodListAcq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acquired"/>
+
+    <TextView
+        android:id="@+id/textView_foodListExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Expires"/>
+
+    <TextView
+        android:id="@+id/textView_foodListNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="note"/>
 </LinearLayout>

@@ -58,13 +58,14 @@
         android:id="@+id/addFoodFloatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/sortOptionsLayout"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_dialog_email"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/foodListView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="12dp"/>
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/viewfinder_border"/>
 
 </RelativeLayout>
