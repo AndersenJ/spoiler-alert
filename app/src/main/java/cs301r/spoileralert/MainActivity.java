@@ -3,16 +3,21 @@ package cs301r.spoileralert;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RadioGroup sortRadioGroup;
     private RadioButton sortByExpiryButton;
     private RadioButton sortByNameButton;
     private FloatingActionButton addFoodButton;
@@ -24,7 +29,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sortByExpiryButton = (RadioButton) findViewById(R.id.sortByExpiryRadioButton);
+        sortByExpiryButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    FoodData.sortByExpires();
+                    foodListView.invalidateViews();
+                }
+            }
+        });
         sortByNameButton = (RadioButton) findViewById(R.id.sortByNameRadioButton);
+        sortByNameButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    FoodData.sortByName();
+                    foodListView.invalidateViews();
+                }
+            }
+        });
 
         addFoodButton = (FloatingActionButton) findViewById(R.id.addFoodFloatingButton);
         addFoodButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        if (sortByExpiryButton.isChecked()) {
+            FoodData.sortByExpires();
+        } else if (sortByNameButton.isChecked()) {
+            FoodData.sortByName();
+        }
         foodListView.invalidateViews();
     }
 }
