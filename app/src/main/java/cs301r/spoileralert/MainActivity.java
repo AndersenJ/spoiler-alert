@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RadioGroup sortRadioGroup;
     private RadioButton sortByExpiryButton;
     private RadioButton sortByNameButton;
     private FloatingActionButton addFoodButton;

@@ -45,8 +45,8 @@ public class FoodListAdapter extends BaseAdapter {
         TextView note = (TextView) v.findViewById(R.id.textView_foodListNote);
 
         itemName.setText(FoodData.getFoodAt(position).getName());
-        acquiryDate.setText(FoodData.getFoodAt(position).getAcquiry());
-        expiryDate.setText(FoodData.getFoodAt(position).getExpiry());
+        acquiryDate.setText("Acquired: " + FoodData.getFoodAt(position).getAcquiry());
+        expiryDate.setText("Expires: " + FoodData.getFoodAt(position).getExpiry());
         note.setText(FoodData.getFoodAt(position).getNote());
 
         return v;

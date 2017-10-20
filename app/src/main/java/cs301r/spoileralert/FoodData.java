@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -80,6 +79,4 @@ public class FoodData {
 
             return foodName1.compareTo(foodName2);
         }};
-
-    //todo removal not yet supported, consider adding a unique id to reach food and making the list into a map?
 }
