@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddFoodActivity extends AppCompatActivity {
-    private static final int DEFAULT_EXPIRY_DAYS = 4;
     private enum DateType {ACQUIRY, EXPIRY};
     private static DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -39,7 +38,6 @@ public class AddFoodActivity extends AppCompatActivity {
 
         acquiryDate = Calendar.getInstance();
         expiryDate = Calendar.getInstance();
-        expiryDate.add(Calendar.DATE, DEFAULT_EXPIRY_DAYS);
 
         acquiryTextView = (TextView) findViewById(R.id.textView_acquisitionDate);
         acquiryTextView.setText(formatter.format(acquiryDate.getTime()));
@@ -52,7 +50,7 @@ public class AddFoodActivity extends AppCompatActivity {
         });
 
         expiryTextView = (TextView) findViewById(R.id.textView_expiryDate);
-        expiryTextView.setText(formatter.format(expiryDate.getTime()));
+        expiryTextView.setText("");
         expiryTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
