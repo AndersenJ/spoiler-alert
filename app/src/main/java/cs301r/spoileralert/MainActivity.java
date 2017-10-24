@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent i = new Intent(context, BarcodeScannerActivity.class);
+                Intent i = new Intent(context, AddFoodActivity.class);
                 context.startActivity(i);
             }
         });
