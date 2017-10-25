@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editText_itemName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Food Name"
-        android:inputType="textPersonName"
-        android:text="FOOD NAME"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="24sp"/>
+        android:paddingTop="4dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText_itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="Food Name"
+            android:inputType="textPersonName"
+            android:text="FOOD NAME"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="24sp"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/barcodeScannerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_add"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
