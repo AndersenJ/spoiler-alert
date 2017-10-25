@@ -3,6 +3,7 @@ package cs301r.spoileralert;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +32,7 @@ public class AddFoodActivity extends AppCompatActivity {
     private Calendar acquiryDate;
     private Calendar expiryDate;
     private DateType lastSelected;
+    private FloatingActionButton barcodeScannerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +111,13 @@ public class AddFoodActivity extends AppCompatActivity {
         });
         foodName.setText(getIntent().getStringExtra("FOOD_NAME"));
 
+        barcodeScannerButton = (FloatingActionButton) findViewById(R.id.barcodeScannerButton);
+        barcodeScannerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AddFoodActivity.this, "Button Pushed!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
