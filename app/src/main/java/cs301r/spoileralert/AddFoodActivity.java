@@ -41,6 +41,9 @@ public class AddFoodActivity extends AppCompatActivity {
         expiryDate = Calendar.getInstance();
 
         acquiryTextView = (TextView) findViewById(R.id.textView_acquisitionDate);
+        foodName =(EditText) findViewById(R.id.editText_itemName);
+        expiryTextView = (TextView) findViewById(R.id.textView_expiryDate);
+
         acquiryTextView.setText(formatter.format(acquiryDate.getTime()));
         acquiryTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,14 +52,47 @@ public class AddFoodActivity extends AppCompatActivity {
                 showDialog(998);
             }
         });
+        acquiryTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        expiryTextView = (TextView) findViewById(R.id.textView_expiryDate);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                addFoodButton.setEnabled(foodName.length() > 0 && expiryTextView.length() > 0
+                        && acquiryTextView.length() > 0);
+            }
+        });
+
         expiryTextView.setText("");
         expiryTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 lastSelected = DateType.EXPIRY;
                 showDialog(999);
+            }
+        });
+        expiryTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                addFoodButton.setEnabled(foodName.length() > 0 && expiryTextView.length() > 0
+                        && acquiryTextView.length() > 0);
             }
         });
 
@@ -78,7 +114,6 @@ public class AddFoodActivity extends AppCompatActivity {
         addFoodButton.setEnabled(false);
 
 
-        foodName =(EditText) findViewById(R.id.editText_itemName);
         foodName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,7 +128,8 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String foodName = s.toString();
-                addFoodButton.setEnabled(foodName.length() > 0);
+                addFoodButton.setEnabled(foodName.length() > 0 && expiryTextView.length() > 0
+                    && acquiryTextView.length() > 0);
             }
         });
         foodName.setText(getIntent().getStringExtra("FOOD_NAME"));
