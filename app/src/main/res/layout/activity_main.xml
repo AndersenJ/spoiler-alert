@@ -20,13 +20,13 @@
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/viewfinder_border"/>
+        app:backgroundTint="@color/viewfinder_border" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        android:paddingLeft="8dp">
 
 
         <TextView
@@ -34,14 +34,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your Foodstuffs"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
         <LinearLayout
             android:id="@+id/sortOptionsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/foodstuffsTitleTextView"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="4dp">
 
             <TextView
                 android:id="@+id/sortOptionsTextView"
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Sort by: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <RadioGroup
                 android:id="@+id/sortButtonGroup"
@@ -64,14 +65,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Expiration Date"/>
+                    android:text="Expiration Date" />
 
                 <RadioButton
                     android:id="@+id/sortByNameRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"/>
+                    android:text="Name" />
 
             </RadioGroup>
 
@@ -82,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/sortOptionsLayout"
-            android:background="#eaeaea"/>
+            android:background="#eaeaea" />
 
     </RelativeLayout>
 
