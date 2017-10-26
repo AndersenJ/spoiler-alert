@@ -3,26 +3,26 @@ package cs301r.spoileralert;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
+
+import cs301r.spoileralert.recyclerSimplified.FoodListRecycleAdapter;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private RadioButton sortByExpiryButton;
     private RadioButton sortByNameButton;
     private FloatingActionButton addFoodButton;
-    private ExpandableListView foodListView;
-//    private ListView foodListView;
+    private RecyclerView foodRecyclerView;
+    private FoodListRecycleAdapter foodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     FoodData.sortByExpires();
-                    foodListView.invalidateViews();
+                    foodAdapter.notifyParentDataSetChanged(false);
                 }
             }
         });
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     FoodData.sortByName();
-                    foodListView.invalidateViews();
+                    foodAdapter.notifyParentDataSetChanged(false);
                 }
             }
         });
@@ -63,10 +63,16 @@ public class MainActivity extends AppCompatActivity {
 //        foodListView = (ListView) findViewById(R.id.foodListView);
 //        FoodListAdapter adapter = new FoodListAdapter(this);
 //        foodListView.setAdapter(adapter);
+//
+//        foodListView = (ExpandableListView) findViewById(R.id.foodListView);
+//        ExpandableListAdapter adapter = new ExpandableListAdapter(this);
+//        foodListView.setAdapter(adapter);
 
-        foodListView = (ExpandableListView) findViewById(R.id.foodListView);
-        ExpandableListAdapter adapter = new ExpandableListAdapter(this);
-        foodListView.setAdapter(adapter);
+        foodRecyclerView = (RecyclerView) findViewById(R.id.foodRecyclerView);
+        foodAdapter = new FoodListRecycleAdapter(this, FoodData.getAllFoods());
+        foodRecyclerView.setAdapter(foodAdapter);
+        foodRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
@@ -100,6 +106,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (sortByNameButton.isChecked()) {
             FoodData.sortByName();
         }
-        foodListView.invalidateViews();
+        foodAdapter.notifyParentDataSetChanged(false);
     }
 }
