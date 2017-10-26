@@ -132,16 +132,16 @@
             android:id="@+id/barcodeScannerButton"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight=".01"
             android:clickable="true"
             app:elevation="0dp"
             app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_menu_add"
-            app:useCompatPadding="true"
-            android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp" />
+            app:srcCompat="@drawable/barcode_scan_icon"
+            app:useCompatPadding="true"/>
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>

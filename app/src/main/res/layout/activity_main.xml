@@ -1,74 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="cs301r.spoileralert.MainActivity"
-    android:orientation="vertical">
-
-
-    <TextView
-        android:id="@+id/foodstuffsTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Foodstuffs"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"/>
-
-    <LinearLayout
-        android:id="@+id/sortOptionsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/foodstuffsTitleTextView">
-
-        <TextView
-            android:id="@+id/sortOptionsTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sort by: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-
-        <RadioGroup
-            android:id="@+id/sortButtonGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/sortByExpiryRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="Expiration Date"/>
-
-            <RadioButton
-                android:id="@+id/sortByNameRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Name"/>
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/foodListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/sortOptionsLayout"/>
+    tools:context="cs301r.spoileralert.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addFoodFloatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sortOptionsLayout"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/sortOptionsLayout"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="12dp"
@@ -77,4 +22,67 @@
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/viewfinder_border"/>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/foodstuffsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Foodstuffs"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"/>
+
+        <LinearLayout
+            android:id="@+id/sortOptionsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/foodstuffsTitleTextView"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sortOptionsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sort by: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            <RadioGroup
+                android:id="@+id/sortButtonGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/sortByExpiryRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Expiration Date"/>
+
+                <RadioButton
+                    android:id="@+id/sortByNameRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"/>
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <ExpandableListView
+            android:id="@+id/foodListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/sortOptionsLayout"
+            android:background="#eaeaea"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

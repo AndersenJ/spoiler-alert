@@ -79,4 +79,8 @@ public class FoodData {
 
             return foodName1.compareTo(foodName2);
         }};
+
+    public static void removeAt(int i) {
+        allFoods.remove(i);
+    }
 }
