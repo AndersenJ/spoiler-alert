@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton sortByExpiryButton;
     private RadioButton sortByNameButton;
     private FloatingActionButton addFoodButton;
-    private ListView foodListView;
+    private ExpandableListView foodListView;
+//    private ListView foodListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,13 @@ public class MainActivity extends AppCompatActivity {
                 context.startActivity(i);
             }
         });
+//
+//        foodListView = (ListView) findViewById(R.id.foodListView);
+//        FoodListAdapter adapter = new FoodListAdapter(this);
+//        foodListView.setAdapter(adapter);
 
-        foodListView = (ListView) findViewById(R.id.foodListView);
-        FoodListAdapter adapter = new FoodListAdapter(this);
+        foodListView = (ExpandableListView) findViewById(R.id.foodListView);
+        ExpandableListAdapter adapter = new ExpandableListAdapter(this);
         foodListView.setAdapter(adapter);
     }
 
