@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,11 +18,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import cs301r.spoileralert.recyclerSimplified.Parent;
+
 /**
  * Created by kcwillmore on 10/12/17.
  */
 
-public class FoodData implements java.io.Serializable {
+public class FoodData implements Serializable, Parent<FoodData> {
     private static List<FoodData> allFoods = load();
     private static DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -134,4 +137,19 @@ public class FoodData implements java.io.Serializable {
         }
     }
 
+    @Override
+    public List<FoodData> getChildList() {
+        List<FoodData> childList = new ArrayList<>();
+        childList.add(this);
+        return childList;
+    }
+
+    @Override
+    public boolean isInitiallyExpanded() {
+        return false;
+    }
+
+    public static List<FoodData> getAllFoods() {
+        return allFoods;
+    }
 }
