@@ -58,6 +58,8 @@ public class BarcodeScannerActivity extends AppCompatActivity implements ZBarSca
                     JSONObject items = response.getJSONArray("items").getJSONObject(0);
                     String title = items.getString("title");
                     i.putExtra("FOOD_NAME", title);
+                    AddFoodActivity.foodName.setText(title);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     context.startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();

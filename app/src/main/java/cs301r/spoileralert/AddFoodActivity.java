@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,12 +22,11 @@ public class AddFoodActivity extends AppCompatActivity {
     private enum DateType {ACQUIRY, EXPIRY};
     private static DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
-    private EditText foodName;
+    public static EditText foodName;
     private TextView acquiryTextView;
     private TextView expiryTextView;
     private EditText foodNoteEditText;
     private Button addFoodButton;
-    private Button backButton;
     private Calendar acquiryDate;
     private Calendar expiryDate;
     private DateType lastSelected;
@@ -79,17 +77,6 @@ public class AddFoodActivity extends AppCompatActivity {
         });
         addFoodButton.setEnabled(false);
 
-        backButton = (Button) findViewById(R.id.buttonback);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //returns to home, closing activities as it goes
-                Intent intent = new Intent(AddFoodActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-            }
-        });
-
 
         foodName =(EditText) findViewById(R.id.editText_itemName);
         foodName.addTextChangedListener(new TextWatcher() {
@@ -115,7 +102,9 @@ public class AddFoodActivity extends AppCompatActivity {
         barcodeScannerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AddFoodActivity.this, "Button Pushed!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddFoodActivity.this, BarcodeScannerActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             }
         });
     }
