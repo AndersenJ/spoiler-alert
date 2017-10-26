@@ -138,7 +138,6 @@
             android:layout_marginTop="8dp"
             android:layout_weight=".01"
             android:clickable="true"
-            app:backgroundTint="@color/viewfinder_border"
             app:elevation="0dp"
             app:fabSize="normal"
             app:layout_constraintRight_toRightOf="parent"
