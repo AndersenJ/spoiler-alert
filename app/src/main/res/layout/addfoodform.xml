@@ -5,6 +5,12 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Food Name" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,14 +19,14 @@
 
         <EditText
             android:id="@+id/editText_itemName"
+            style="@android:style/Widget.Material.EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:hint="Food Name"
+            android:hint="Enter Name"
             android:inputType="textPersonName"
-            android:text="FOOD NAME"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/barcodeScannerButton"
@@ -30,56 +36,47 @@
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/ic_menu_add"/>
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_acquisitionDate"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:ems="10"
+        android:hint='Enter date'
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView_expiryDate"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:ems="10"
+        android:hint="Enter date"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Acquisition Date: "
-            android:textSize="24sp"/>
-
-        <TextView
-            android:id="@+id/textView_acquisitionDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:textSize="24sp"/>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Expiration Date: "
-            android:textSize="24sp"/>
-
-        <TextView
-            android:id="@+id/textView_expiryDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:textSize="24sp"/>
 
     </LinearLayout>
 
     <EditText
         android:id="@+id/editText_notes"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="text"
-        android:hint="Note"/>
+        android:hint="Note"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/button_add"
@@ -87,9 +84,4 @@
         android:layout_height="wrap_content"
         android:text="Add Food"/>
 
-    <Button
-        android:id="@+id/buttonback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Don't"/>
 </LinearLayout>
