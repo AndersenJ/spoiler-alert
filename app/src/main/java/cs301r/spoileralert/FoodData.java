@@ -1,5 +1,14 @@
 package cs301r.spoileralert;
 
+import android.content.Context;
+import android.os.Environment;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,8 +21,8 @@ import java.util.List;
  * Created by kcwillmore on 10/12/17.
  */
 
-public class FoodData {
-    private static List<FoodData> allFoods = new ArrayList<>();
+public class FoodData implements java.io.Serializable {
+    private static List<FoodData> allFoods = load();
     private static DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
     private String name;
@@ -33,7 +42,12 @@ public class FoodData {
     }
 
     public static boolean addFood(FoodData food) {
-        return allFoods.add(food);
+        if (allFoods.add(food)) {
+            save();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static int getFoodCount() {
@@ -82,5 +96,42 @@ public class FoodData {
 
     public static void removeAt(int i) {
         allFoods.remove(i);
+        save();
     }
+
+    public static boolean save() {
+        try {
+            String filename = "data/cs301r.spoileralert/foods.txt";
+            File file = new File(Environment.getDataDirectory(), filename);
+            FileOutputStream fileOut = new FileOutputStream(file);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(allFoods);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in foods.txt");
+            return true;
+        } catch (IOException i) {
+            i.printStackTrace();
+            return false;
+        }
+    }
+
+    public static ArrayList<FoodData> load() {
+        try {
+            FileInputStream fileIn = new FileInputStream(new File(Environment.getDataDirectory(), "data/cs301r.spoileralert/foods.txt"));
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            ArrayList loadedData = (ArrayList) in.readObject();
+            in.close();
+            fileIn.close();
+            return loadedData;
+        } catch (IOException i) {
+            i.printStackTrace();
+            return new ArrayList<>();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
 }
