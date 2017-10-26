@@ -2,6 +2,7 @@ package cs301r.spoileralert;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -49,6 +51,8 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lastSelected = DateType.ACQUIRY;
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(acquiryTextView.getWindowToken(), 0);
                 showDialog(998);
             }
         });
@@ -75,6 +79,8 @@ public class AddFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lastSelected = DateType.EXPIRY;
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(expiryTextView.getWindowToken(), 0);
                 showDialog(999);
             }
         });
