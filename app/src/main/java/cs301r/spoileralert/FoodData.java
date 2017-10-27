@@ -152,4 +152,9 @@ public class FoodData implements Serializable, Parent<FoodData> {
     public static List<FoodData> getAllFoods() {
         return allFoods;
     }
+
+    public boolean isExpired() {
+        Calendar today = Calendar.getInstance();
+        return (today.compareTo(expiryDate) > 0);
+    }
 }

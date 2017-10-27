@@ -1,6 +1,7 @@
 package cs301r.spoileralert.recyclerSimplified;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -30,8 +31,16 @@ public class FoodParentViewHolder extends ParentViewHolder {
         mArrowExpandImageView = (ImageView) itemView.findViewById(R.id.arrow_expand_imageview);
     }
 
+
+
     public void bind(FoodData foodData) {
         foodNameTextView.setText(foodData.getName());
+
+        if (foodData.isExpired()) {
+            foodNameTextView.setTextColor(0xffcc0000);
+        } else {
+            foodNameTextView.setTextColor(0xff737373);
+        }
     }
 
     @SuppressLint("NewApi")

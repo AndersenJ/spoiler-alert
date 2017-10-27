@@ -41,5 +41,11 @@ public class FoodChildViewHolder extends ChildViewHolder {
 
             }
         });
+
+        if (food.isExpired()) {
+            expiryTextView.setTextColor(0xffcc0000);
+        } else {
+            expiryTextView.setTextColor(0xff737373);
+        }
     }
 }
