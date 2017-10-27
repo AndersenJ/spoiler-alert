@@ -5,34 +5,57 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-
-        <TextView
-            android:id="@+id/recyclerList_item_acquiry"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="72dp"
-            tools:text="Acquired?"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/recyclerList_item_expiry"
+            <TextView
+                android:layout_marginLeft="72dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Acquired: "/>
+
+            <TextView
+                android:id="@+id/recyclerList_item_acquiry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="Acquired?"/>
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="72dp"
-            tools:text="Expired?"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/recyclerList_item_note"
+            <TextView
+                android:layout_marginLeft="72dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expires: "/>
+
+            <TextView
+                android:id="@+id/recyclerList_item_expiry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:text="Expired?"/>
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="72dp"
-            tools:text="Noted?"/>
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/recyclerList_item_note"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="72dp"
+                tools:text="Noted?"/>
+        </TableRow>
+
+    </TableLayout>
 
     <ImageButton
         android:id="@+id/recyclerList_removeItemButton"

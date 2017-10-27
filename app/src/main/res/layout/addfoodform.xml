@@ -138,12 +138,13 @@
             android:layout_marginTop="8dp"
             android:layout_weight=".01"
             android:clickable="true"
+            app:backgroundTint="@color/viewfinder_border"
             app:elevation="0dp"
             app:fabSize="normal"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/barcode_scan_icon2_white"
-            app:useCompatPadding="true" />
+            app:useCompatPadding="true"/>
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
